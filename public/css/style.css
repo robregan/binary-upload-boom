@@ -1,8 +1,12 @@
 body{
-    background: #F5E1FD;
+    background: black;
     font-family: 'Itim', cursive;
     font-size: 1.2em;
+    color: white;
 }
 a{
     color:mediumturquoise;
+}
+h3{
+    float: right;
 }
