@@ -17,10 +17,6 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  likes: {
-    type: Number,
-    required: true,
-  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -28,6 +24,25 @@ const PostSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  contactInfo: {
+    type: String,
+    required: true,
+  },
+  subject: {
+    type: String,
+    required: true,
+  },
+  courseNumber: {
+    type: String,
+  },
+  cost: {
+    type: Number,
+    required: true,
   },
 });
 

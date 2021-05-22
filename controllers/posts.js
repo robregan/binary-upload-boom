@@ -12,8 +12,15 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      if (req.body.title) {
+        const posts = await Post.find(req.body.title)
+          .sort({ createdAt: "desc" })
+          .lean();
+        res.render("feed.ejs", { posts: posts });
+      } else {
+        const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+        res.render("feed.ejs", { posts: posts });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -38,6 +45,11 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
+        location: req.body.location,
+        contactInfo: req.body.contactInfo,
+        subject: req.body.subject,
+        courseNumber: req.body.courseNumber,
+        cost: req.body.cost,
       });
       console.log("Post has been added!");
       res.redirect("/profile");
