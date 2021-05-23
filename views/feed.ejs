@@ -11,7 +11,7 @@
           <% for(var i=0; i<posts.length; i++) {%>
             <li class="col-3 justify-content-between mt-5">
               <a href="/post/<%= posts[i]._id%>">
-                <img class="img-fluid" src="<%= posts[i].image%>">
+                <img class="img-fluid card" src="<%= posts[i].image%>">
                 <!-- Hardcoded value, as we don't have database with cost field set up just yet -->
                 <p>
                   <%= posts[i].title %>

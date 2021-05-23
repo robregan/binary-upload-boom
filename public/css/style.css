@@ -22,3 +22,16 @@ span {
   height: 40px;
   width: 15%;
 }
+
+.card {
+  width: 100%;
+  height: 20vw;
+}
+
+.container-image {
+  background: url("../imgs/bookshelf.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 60vh;
+}
