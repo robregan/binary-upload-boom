@@ -16,10 +16,10 @@ module.exports = {
         const posts = await Post.find(req.body.title)
           .sort({ createdAt: "desc" })
           .lean();
-        res.render("feed.ejs", { posts: posts });
+        res.render("feed.ejs", { posts: posts, results: false });
       } else {
         const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-        res.render("feed.ejs", { posts: posts });
+        res.render("feed.ejs", { posts: posts, results: false });
       }
     } catch (err) {
       console.log(err);
@@ -85,4 +85,18 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  getSearch: async (req, res) => {
+    try {
+      const query = req.query.nameBook;
+
+      let search = await Post.find({
+        $text: {
+          $search: query
+        }
+      })
+      res.render('listSearch.ejs', { search })
+    } catch (err) {
+      console.log(err)
+    }
+  }
 };
